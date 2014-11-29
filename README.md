@@ -81,7 +81,7 @@ a simple front-end file/Resources (queue) loader.
 		]); 
 	</script> 
 
-> 说明：队列可以嵌套。
+> 说明：队列可以嵌套，但无法继承嵌套外的队列，建议安排在依赖关系的最后。
 
 2、单个加载:
 

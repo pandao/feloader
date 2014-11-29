@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8" /> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+	<meta name="author" content="Pandao" />  
+	<title>Sea.js Test</title> 
+</head>
+<body> 
+	<div id="test" class="background:#ccc;">Test DIV</div>
+	<script src="js/sea.js"></script>
+	<script type="text/javascript">
+		seajs.config({
+			base : "./js",
+			alias : {
+				'feloader' : 'feloader'
+			}
+		});
+
+		seajs.use("./js/main"); 
+	</script>
+</body>
+</html>

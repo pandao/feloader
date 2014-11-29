@@ -18,7 +18,7 @@
 }(function(require, exports, module) { 
 
 	var _this = exports;
-	//var head = document.getElementsByTagName('head')[0]; 
+	var head = document.getElementsByTagName('head')[0]; 
 
 	exports.index = 0;
 

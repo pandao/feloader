@@ -9,8 +9,8 @@ module.exports = function(grunt) {
 				banner: '/*! <%= pkg.name %> V<%= pkg.version %> | <%= pkg.description %> | MIT License | By: <%= pkg.author %> | <%= pkg.homepage %> | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 			},
             js: {  
-                files: {  
-                    'js/feloader-1.0.0.min.js': ['src/feloader-1.0.0.js'] //save over the newly created script  
+                files: {   
+                    'js/feloader-<%= pkg.version %>.min.js': ['src/feloader-1.0.0.js'] //save over the newly created script  
                 }  
             } 
         }  

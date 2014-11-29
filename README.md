@@ -81,7 +81,7 @@ a simple front-end file/Resources (queue) loader.
 		]); 
 	</script> 
 
-> 说明：队列可以嵌套，但无法继承嵌套外的队列，建议安排在依赖关系的最后。
+> 说明：队列可以嵌套，但无法继续嵌套外的队列，所以建议安排在依赖关系的最后。
 
 2、单个加载:
 
@@ -108,6 +108,8 @@ a simple front-end file/Resources (queue) loader.
 	}).loadImage({
 		url : 'images/test.png'
 	});
+
+> 说明：非队列加载不能保证加载顺序；
 
 3、在Sea.js中使用：
 

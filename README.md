@@ -21,7 +21,7 @@ a simple front-end file/Resources (queue) loader.
 		url      : 路径或者网址,
 		wait     : 是否暂停，默认false，等待callback回调函数执行完成，再进入下一个加载,
 		callback : 回调函数，必须return true才能继承下一个加载，
-		appendTo : 追加到某个元素里，值为元素对象，默认值为'body'，加载脚本时只能是body或者head,
+		appendTo : 追加到某个元素里，值为元素对象，默认值为'body'，加载脚本和CSS时只能是'body'或者'head',
 		width    : 加载图片时才有效,
 		height   : 同上
 	}

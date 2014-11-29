@@ -1,9 +1,7 @@
 {
-  "name": "feloader",
-  "file": "Feloader V1.0.0",
+  "name": "Feloader", 
   "version": "1.0.0",
-  "description": "a simple front-end file/Resources (queue) loader",
-  "main": "index.js",
+  "description": "a simple front-end file/Resources (queue) loader", 
   "repository": {
     "type": "git",
     "url": "https://github.com/pandao/feloader.git"

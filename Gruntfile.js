@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         //our uglify options  
         uglify: {  
 			options: {
-				banner: '/*! <%= pkg.file %> | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+				banner: '/*! <%= pkg.name %> V<%= pkg.version %> | <%= pkg.description %> | MIT License | By: <%= pkg.author %> | <%= pkg.homepage %> | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 			},
             js: {  
                 files: {  

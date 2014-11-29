@@ -1,5 +1,5 @@
 /*!
-	FeLoader v1.0.0 | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | UpdateTime: 2014-11-29 19:22:09 
+	FeLoader v1.0.0 | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | UpdateTime: 2014-11-29 23:07:04  
 */
 ;(function(feloader) {
 

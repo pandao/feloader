@@ -1,5 +1,5 @@
 /*!
-	FeLoader v1.1.0 | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | UpdateTime: 2014-11-30 14:23:30    
+	FeLoader v1.1.0 | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | UpdateTime:  2014-11-30 17:24:40   
 */
 ;(function(feloader) {
 
@@ -146,7 +146,7 @@
 			_this.beforeHandler(queue);
 		}
 
-		img.onload = img.onreadystatechange = function() { 
+		img.onload = function() { 
 
 			var appendTo = (typeof (queue.appendTo) == "undefined" || queue.appendTo == "body") ? document.body :  queue.appendTo;
 			

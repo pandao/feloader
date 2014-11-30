@@ -23,6 +23,12 @@ define(function(require){
 			url : 'js/functions.js'
 		},
 		{
+			url : 'js/functions.js'  // 重复会跳过
+		},
+		{
+			url : 'css/style.css'
+		},
+		{
 			url : 'css/style.css'
 		},
 		{
@@ -42,7 +48,7 @@ define(function(require){
 			url : 'images/test.gif' 
 		},
 		{
-			url : 'images/test.webp',
+			url : 'images/test.webp', //IE不支持webp格式的图片，所以加载错误
 			before : function(queue) {
 				queue.appendTo.innerHTML = "图片加载中....";
 			},

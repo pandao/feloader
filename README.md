@@ -19,12 +19,13 @@ a simple front-end file/Resources (queue) loader.
 
 	{
 		url      : String       路径或者网址,
-		wait     : Boolean      是否暂停，默认false，等待callback回调函数执行完成，再进入下一个加载,
+		wait     : Boolean      是否暂停/等待，默认为false，等待callback回调函数的执行完成，再进入下一个加载,
 		before   : Function     加载前的处理，例如加载图片的loading,
-		callback : Function     加载后的回调函数，必须return true才能继承下一个加载，
+		callback : Function     加载后的回调函数，必须return true，这样队列才能继续下一个加载；
+								另外在回调里嵌套另一个队列是同步的，这样就不能保持是顺序的加载了，
 		appendTo : HTMLElement  追加到某个元素里，值为元素对象，默认值为'body'，加载脚本和CSS时只能是'body'或者'head',
-		width    : Number       加载图片时才有效,
-		height   : Number       同上
+		width    : Number/%/px  加载图片时才有效,
+		height   : Number/%/px  同上
 	}
 
 1、队列加载
@@ -190,4 +191,6 @@ a simple front-end file/Resources (queue) loader.
 
 ####License
 
-MIT License.
+The MIT License ([MIT](https://raw.githubusercontent.com/pandao/feloader/master/LICENSE "MIT"))
+
+Copyright (c) 2014 Pandao

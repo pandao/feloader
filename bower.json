@@ -1,0 +1,24 @@
+{
+  "name": "feloader",
+  "version": "1.0.1",
+  "homepage": "https://github.com/pandao/feloader",
+  "authors": [
+    "Pandao <pandao@vip.qq.com>"
+  ],
+  "description": "a simple front-end file/Resources (queue) loader",
+  "main": "src/feloader.js",
+  "keywords": [
+    "queue",
+    "loader"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+	"*.bat",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

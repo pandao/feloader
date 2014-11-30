@@ -31,7 +31,7 @@ a simple front-end file/Resources (queue) loader.
 1、队列加载
 
 	
-	<script type="text/javascript" src="js/feloader.js"></script>
+	<script type="text/javascript" src="dist/feloader.min.js"></script>
 	<script type="text/javascript"> 
 		feloader.queue([
 			{url : "js/config.js"},
@@ -120,14 +120,13 @@ a simple front-end file/Resources (queue) loader.
 
 	<script src="js/sea.js"></script>
 	<script type="text/javascript">
-		seajs.config({
-			base : "./js",
+		seajs.config({ 
 			alias : {
-				'feloader' : 'feloader'
+				'feloader' : '../../dist/feloader.min'
 			}
 		});
 
-		seajs.use("./main"); 
+		seajs.use("./js/main"); 
 	</script>
 
 	//main.js
@@ -157,7 +156,7 @@ a simple front-end file/Resources (queue) loader.
 	<script type="text/javascript"> 　　
 		require.config({
 	　　　　paths: {
-	　　　　　　"feloader": "./js/feloader"
+	　　　　　　"feloader": "../dist/feloader.min"
 	　　　　}
 	　　});
 

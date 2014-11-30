@@ -13,6 +13,12 @@ a simple front-end file/Resources (queue) loader.
 - Webkit：Chrome/Safari/Opera
 - Firefox
 
+####安装方法
+
+通过bower安装：
+
+	bower install feloader
+
 ####使用方法
 
 参数说明：

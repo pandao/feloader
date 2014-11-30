@@ -6,7 +6,7 @@
 	</head>
 	<body> 
 		<div id="test" class="background:#ccc;">Test DIV</div>
-		<script type="text/javascript" src="../dist/feloader.min.js"></script>
+		<script type="text/javascript" src="../src/feloader.js"></script>
 		<script type="text/javascript"> 
 			feloader.queue([
 				{url : "js/config.js"},
@@ -28,6 +28,12 @@
 				},
 				{
 					url : 'js/functions.js'
+				},
+				{
+					url : 'js/functions.js'  // 重复会跳过
+				},
+				{
+					url : 'css/style.css'
 				},
 				{
 					url : 'css/style.css'

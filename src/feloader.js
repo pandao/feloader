@@ -26,6 +26,8 @@
 
 	exports.queues = [];
 
+	exports.map    = [];
+
 	exports.appendTo = 'body';
 
 	exports.queue = function (queues) {
@@ -43,13 +45,11 @@
 	exports.queueLoad = function () { 
 
 		var queue = _this.queues[_this.index];
+		var url = queue.url; 
 
-		if(/.css/.test(queue.url)) {
-			//console.log('Loading CSS');
+		if(/.css/.test(url)) { 
 			_this.loadCSS(queue);
-		} 
-		else if(/.jpg|.jpeg|.png|.gif|.webp/.test(queue.url)) {
-			//console.log('Loading Image');
+		} else if(/.jpg|.jpeg|.png|.gif|.webp/.test(url)) { 
 			_this.loadImage(queue);
 		} else {
 			_this.loadScript(queue);
@@ -60,36 +60,43 @@
 
 		var url = (/.js$/.test(queue.url)) ? queue.url : queue.url+".js";  
 
-		var script = document.createElement("script");
-		script.setAttribute("charset", "utf-8");
-		script.type="text/javascript";
+		if(!_this.map[url]) {
 
-		if(typeof (queue.before) !== "undefined") {
-			_this.beforeHandler(queue);
-		}
+			var script = document.createElement("script");
+			script.setAttribute("charset", "utf-8");
+			script.type="text/javascript";
 
-		script.onload = script.onreadystatechange = function() { 
-			_this.callbackHandler(queue);
-		};
-					
-		script.onerror = function() {
-			_this.errorHandler(url);
-		};
+			if(typeof (queue.before) !== "undefined") {
+				_this.beforeHandler(queue);
+			}
+
+			script.onload = script.onreadystatechange = function() {  
+				_this.map[url] = url;
+				_this.callbackHandler(queue);
+			};
+						
+			script.onerror = function() {
+				_this.errorHandler(url);
+			};
+			 
+			script.src = url; 
+
+			var appendTo = (typeof (queue.appendTo) == "undefined") ? _this.appendTo : queue.appendTo;
 		
-		//script.defer = true;
-		//script.async = true;
-		script.src = url; 
+			if (appendTo == "body") 
+			{
+				document.body.appendChild(script);
+			}
+			else if (appendTo == "head") 
+			{
+				head.appendChild(script);
+			} 
+		} else {
+			console.info("[Feloader] [info] "+url+" is loaded, break;");
 
-		var appendTo = (typeof (queue.appendTo) == "undefined") ? _this.appendTo : queue.appendTo;
-	
-		if (appendTo == "body") 
-		{
-			document.body.appendChild(script);
+			_this.index ++;
+			_this.queueLoad();
 		}
-		else if (appendTo == "head") 
-		{
-			head.appendChild(script);
-		} 
 
 		return _this;
 	};
@@ -98,29 +105,40 @@
 
 		var url = (/.css$/.test(queue.url)) ? queue.url : queue.url+".css";  
 
-		var css = document.createElement("link");
-		css.rel = "stylesheet"; 
-		css.type = "text/css";
+		if(!_this.map[url]) {
 
-		if(typeof (queue.before) !== "undefined") {
-			_this.beforeHandler(queue);
+			var css = document.createElement("link");
+			css.rel = "stylesheet"; 
+			css.type = "text/css";
+
+			if(typeof (queue.before) !== "undefined") {
+				_this.beforeHandler(queue);
+			}
+
+			css.onload = css.onreadystatechange = function() { 
+				_this.map[url] = url;
+				_this.callbackHandler(queue);
+			};	
+			
+			css.onerror = function() {
+				_this.errorHandler(url);
+			};
+
+			css.href = url; 
+			head.appendChild(css);	
+
+		} else {
+
+			console.info("[Feloader] [info] "+url+" is loaded, break;");
+
+			_this.index ++;
+			_this.queueLoad();
 		}
-
-		css.onload = css.onreadystatechange = function() { 
-			_this.callbackHandler(queue);
-		};	
-		
-		css.onerror = function() {
-			_this.errorHandler(url);
-		};
-
-		css.href = url; 
-		head.appendChild(css);	
 
 		return _this;
 	};
 
-	exports.loadImage = function(queue) {
+	exports.loadImage = function(queue) { 
 
 		var img = new Image();
 
@@ -185,6 +203,8 @@
 				_this.queueLoad();
 			}
 		} 
+
+		console.log(_this.map);
 	};
 
 	exports.errorHandler = function(url) {

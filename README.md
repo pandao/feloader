@@ -1,7 +1,7 @@
 FeLoader
 ========
 
-a simple front-end file/Resources (queue) loader.
+A simple front-end file/Resources (queue) loader.
 
 一个简单的前端资源队列加载工具，支持JS、CSS和图片的动态加载。
 
@@ -14,6 +14,8 @@ a simple front-end file/Resources (queue) loader.
 - Firefox
 
 ####安装方法
+
+	<script type="text/javascript" src="dist/feloader.min.js"></script>
 
 通过bower安装：
 
@@ -94,7 +96,7 @@ a simple front-end file/Resources (queue) loader.
 
 > 说明1：队列可以嵌套，但无法继续嵌套外的队列（因为不能保证队列的加载顺利），所以建议安排在依赖关系的最后进行另一个队列。
 > 
-> 说明2：队列中如果有重复的JS或CSS文件，只加载第一个，其他的直接跳过。
+> 说明2：队列中如果有重复的JS或CSS文件，只加载第一个，其他的直接跳过。 
 
 2、单个加载:
 

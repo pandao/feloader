@@ -18,12 +18,13 @@ a simple front-end file/Resources (queue) loader.
 参数说明：
 
 	{
-		url      : 路径或者网址,
-		wait     : 是否暂停，默认false，等待callback回调函数执行完成，再进入下一个加载,
-		callback : 回调函数，必须return true才能继承下一个加载，
-		appendTo : 追加到某个元素里，值为元素对象，默认值为'body'，加载脚本和CSS时只能是'body'或者'head',
-		width    : 加载图片时才有效,
-		height   : 同上
+		url      : String       路径或者网址,
+		wait     : Boolean      是否暂停，默认false，等待callback回调函数执行完成，再进入下一个加载,
+		callback : Function     回调函数，必须return true才能继承下一个加载，
+		before   : Function     加载前的处理，例如加载图片的loading,
+		appendTo : HTMLElement  追加到某个元素里，值为元素对象，默认值为'body'，加载脚本和CSS时只能是'body'或者'head',
+		width    : Number       加载图片时才有效,
+		height   : Number       同上
 	}
 
 1、队列加载
@@ -72,6 +73,9 @@ a simple front-end file/Resources (queue) loader.
 			},
 			{
 				url : 'images/test.webp',
+				before : function(queue) {
+					queue.appendTo.innerHTML = "图片加载中....";
+				},
 				appendTo : document.getElementById("test")
 			},
 			{
@@ -94,7 +98,7 @@ a simple front-end file/Resources (queue) loader.
 	});
 
 	feloader.loadImage({
-		url : 'images/test.jpg',
+		url : 'images/test.jpg'
 		appendTo: document.body,
 		width: 100,
 		height: 100
@@ -134,7 +138,11 @@ a simple front-end file/Resources (queue) loader.
 		}).loadScript({
 			url : 'js/config'
 		}).loadImage({
-			url : 'images/test.png'
+			url : 'images/test.png', 
+			before : function(queue) {
+				queue.appendTo.innerHTML = "图片加载中....";
+			},
+			appendTo : document.getElementById("test")
 		});
 
 		// 队列，略

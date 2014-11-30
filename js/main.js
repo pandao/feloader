@@ -43,6 +43,9 @@ define(function(require){
 		},
 		{
 			url : 'images/test.webp',
+			before : function(queue) {
+				queue.appendTo.innerHTML = "图片加载中....";
+			},
 			appendTo : document.getElementById("test")
 		},
 		{

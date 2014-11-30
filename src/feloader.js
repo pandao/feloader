@@ -1,5 +1,5 @@
 /*!
-	FeLoader v1.0.0 | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | UpdateTime: 2014-11-29 23:07:04  
+	FeLoader v1.1.0 | a simple front-end file/Resources (queue) loader | MIT License | By: Pandao | E-mail: pandao@vip.qq.com | UpdateTime: 2014-11-30 14:23:30    
 */
 ;(function(feloader) {
 
@@ -64,6 +64,10 @@
 		script.setAttribute("charset", "utf-8");
 		script.type="text/javascript";
 
+		if(typeof (queue.before) !== "undefined") {
+			_this.beforeHandler(queue);
+		}
+
 		script.onload = script.onreadystatechange = function() { 
 			_this.callbackHandler(queue);
 		};
@@ -97,6 +101,11 @@
 		var css = document.createElement("link");
 		css.rel = "stylesheet"; 
 		css.type = "text/css";
+
+		if(typeof (queue.before) !== "undefined") {
+			_this.beforeHandler(queue);
+		}
+
 		css.onload = css.onreadystatechange = function() { 
 			_this.callbackHandler(queue);
 		};	
@@ -115,6 +124,10 @@
 
 		var img = new Image();
 
+		if(typeof (queue.before) !== "undefined") {
+			_this.beforeHandler(queue);
+		}
+
 		img.onload = img.onreadystatechange = function() { 
 
 			var appendTo = (typeof (queue.appendTo) == "undefined" || queue.appendTo == "body") ? document.body :  queue.appendTo;
@@ -125,6 +138,10 @@
 
 			if (typeof (queue.height) !== "undefined") {
 				img.height = queue.height;
+			} 
+
+			if(typeof (queue.before) !== "undefined") {
+				appendTo.innerHTML = ""; 
 			}
 
 			appendTo.appendChild(img);
@@ -141,13 +158,19 @@
 		return _this;
 	};
 
+	exports.beforeHandler = function(queue) {
+		var before = queue.before || (function() { return true; });	  
+
+		before(queue);
+	};
+
 	exports.callbackHandler = function(queue) {
 
 		var wait = queue.wait || false;
 		var callback = queue.callback || (function() { return true; });	  
 		
 		if (wait) {	  
-			if(callback()) {
+			if(callback(queue)) {
 				if(_this.index < _this.count - 1) {
 					_this.index ++;
 					_this.queueLoad();
@@ -155,7 +178,7 @@
 			} 				
 		} else {
 			
-			callback();
+			callback(queue);
 			
 			if(_this.index < _this.count - 1) {
 				_this.index ++;

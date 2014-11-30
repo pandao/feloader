@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 			},
             js: {  
                 files: {   
-                    'js/feloader-<%= pkg.version %>.min.js': ['src/feloader-1.0.0.js'] //save over the newly created script  
+                    'js/feloader-<%= pkg.version %>.min.js': ['src/feloader.js'] //save over the newly created script  
                 }  
             } 
         }  

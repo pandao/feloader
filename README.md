@@ -20,8 +20,8 @@ a simple front-end file/Resources (queue) loader.
 	{
 		url      : String       路径或者网址,
 		wait     : Boolean      是否暂停，默认false，等待callback回调函数执行完成，再进入下一个加载,
-		callback : Function     回调函数，必须return true才能继承下一个加载，
 		before   : Function     加载前的处理，例如加载图片的loading,
+		callback : Function     加载后的回调函数，必须return true才能继承下一个加载，
 		appendTo : HTMLElement  追加到某个元素里，值为元素对象，默认值为'body'，加载脚本和CSS时只能是'body'或者'head',
 		width    : Number       加载图片时才有效,
 		height   : Number       同上
@@ -85,7 +85,7 @@ a simple front-end file/Resources (queue) loader.
 		]); 
 	</script> 
 
-> 说明：队列可以嵌套，但无法继续嵌套外的队列，所以建议安排在依赖关系的最后。
+> 说明：队列可以嵌套，但无法继续嵌套外的队列（因为不能保证队列的加载顺利），所以建议安排在依赖关系的最后进行另一个队列。
 
 2、单个加载:
 

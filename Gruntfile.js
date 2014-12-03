@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     
         uglify: {  
 			options: {
-				banner: '/*! <%= pkg.name %> V<%= pkg.version %> | <%= pkg.description %> | MIT License | By: <%= pkg.author %> | <%= pkg.homepage %> | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+				banner: '/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.description %> | MIT License | By: <%= pkg.author %> | <%= pkg.homepage %> | <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 			},
             js: {  
                 files: {   
